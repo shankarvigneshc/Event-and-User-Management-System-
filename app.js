@@ -1,5 +1,3 @@
-//jshint esversion:6
-//require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const assert = require("assert");
@@ -8,17 +6,13 @@ const session = require('express-session');
 const passport = require("passport");
 
 const passportLocalMongoose = require("passport-local-mongoose");
-//const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrCreate = require('mongoose-findorcreate');
 const { url } = require("inspector");
-//const schedule=require('./public/examples/js/app.js');
-//console.log("Got schedule here!");
-//console.log(schedule);
+
 const app = express();
 
 app.use(express.static("public"));
 
-//app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(bodyParser.urlencoded({
@@ -75,62 +69,11 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-// passport.serializeUser(function(event, done) {
-//   done(null, event.id);
-// });
-
-
-// passport.deserializeUser(function(id, done) {
-//   Event.findById(id, function(err, event) {
-//     done(err, event);
-//   });
-// });
-// const obj =new Event({
-//   calendarId: form.calendarId,
-//   title: form.title,
-//   location: form.location,
-//   start: form.start,
-//   end: form.end,
-//   isAllDay: form.isAllDay,
-//   state: form.state,
-//   isPrivate: form.isPrivate
-
-// }); 
-// obj.save();
-// var windowVar;
-// var myStorage= window.localStorage;
-// var  obj=myStorage.getItem("vOneLocalStorage");
-
-
-// const sch=new Event({
-//   calendarId: Calendar.calendarId,
-//   title: Calendar.title,
-//   location: Calendar.location,
-//   start: Calendar.start,
-//   end: Calendar.end,
-//   isAllDay: Calendar.isAllDay,
-//   state: Calendar.state,
-//   isPrivate: Calendar.isPrivate
-// });
-
-
-
-
-// sch.save(function(err, doc) {
-//        if (err) return console.error(err);
-//        console.log("Document inserted succussfully!");
-//      });
-
-     
-
-
 
 app.get("/", function(req, res){
   res.render("home");
   
 });
-
-
 
 app.get("/login1", function(req, res){
   res.render("login1");
@@ -141,21 +84,11 @@ app.get("/login2", function(req, res){
 });
 
 
-app.get("/dlt", function(req, res){
-  res.render("dlt");
-});
 
 app.get("/registerUser", function(req, res){
   res.render("registerUser");
 });
 
-// app.get("/registerEvent", function(req, res){
-//   res.render("registerEvent");
-// });
-
-app.get("/registerCalendar", function(req, res){
-  res.render("registerCalendar");
-});
 
 
 
@@ -217,38 +150,8 @@ app.post("/registerUser", function(req, res){
 app.post("/dlt", function(req, res){
      console.log("Deletion process started");
      console.log(event_id);
-  // Event.remove(event_id: req.body.event_id , function(err, event){
-  //   if (err) {
-  //     console.log(err);
-  //     res.redirect("/dlt");
-  //   } else {
-  //     console.log("Event deleted successfully");
-  //     res.redirect("/dashboard2");
-  //  }
-  //   }
-  // );
-  //    Event.remove({id:req.body.event_id});
-  //    console.log("Event deleted successfully");
+ 
 });
-// app.post("/dlt", function(req, res){
-//   Event.findOneAndRemove({_id: req.body.event_id}, (err, response) => {
-    
-//     Event.remove(_id, (err, res) => {
-//        if(err)
-//        {
-//          console.log(err);
-//          res.redirect("/dlt")
-//        }
-//        else
-//        {
-//          console.log("Event deleted successfully");
-//          res.redirect("/dashboard2");
-//        }
-//     })
-// })
-
-
-// });
 
 app.post("/registerEvent", function(req, res){
 
@@ -336,16 +239,7 @@ app.post("/deleteEvent", function(req, res){
   
 
 });
-app.post("/registerCalendar", function(req, res){
 
-   Cal.collection.insertOne(req.body, function(err,r) {
-    assert.equal(null, err);
-   
-});
-  console.log("Calendar created successfully!");
-  res.redirect("/dashboard2");
-
-});
 
 app.post("/login1", function(req, res, next){
   passport.authenticate('local', function(err, user, info) {
@@ -362,13 +256,6 @@ app.post("/login1", function(req, res, next){
   
 
 });
-
-
-
-
-
-
-
 
 app.listen(3300, function() {
   console.log("Server started on port 3300.");
