@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5f25717c6bc5493e703d8683",
+    "title": "Deployment",
+    "desc": "Important",
+    "url": "",
+    "start": "2020-08-02T14:10",
+    "end": "2020-08-02T15:00"
+  },
+  {
+    "_id": "5f2571bc19865308c01ffbe5",
+    "title": "Maintenance",
+    "desc": "Run Ops Team",
+    "url": "",
+    "start": "2020-08-07T08:00",
+    "end": "2020-08-07T12:00"
+  },
+  {
+    "_id": "5f269e573406ee2120403f78",
+    "title": "Availabilty",
+    "desc": "Run Ops Team will be available now",
+    "url": "",
+    "start": "2020-08-19T08:00",
+    "end": "2020-08-19T12:00"
+  },
+  {
+    "_id": "5f26ab94030dc937a840af30",
+    "title": "Maintenance2",
+    "desc": "Two hours event",
+    "url": "",
+    "start": "2020-08-29T16:00",
+    "end": "2020-08-29T18:00"
+  }
+]
